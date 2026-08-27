@@ -1,0 +1,1052 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.experience-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 105, 180, 0.16);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.experience-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff69b4, #ff9ecb);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* ===== WhatsApp Mobile Phone Frame ===== */
+.phone-frame {
+  width: 420px;
+  height: 840px;
+  background: #000;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  border: 12px solid #1a1a1a;
+  transition: all 0.7s ease-in-out;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.phone-frame.close-phone {
+  opacity: 0;
+  transform: scale(0.8) translateY(100px);
+  pointer-events: none;
+}
+
+.phone-frame.intro-active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.phone-frame.intro-active.close-phone {
+  transform: translate(-50%, -50%) scale(0.8) translateY(100px);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 30px 30px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ===== WhatsApp Header ===== */
+.whatsapp-header {
+  background: #128c7e;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+}
+
+.header-back {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.header-profile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  background: #ddd;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.header-info {
+  margin: 0;
+}
+
+.contact-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.online-status {
+  margin: 0;
+  font-size: 12px;
+  color: #d0d0d0;
+}
+
+.header-icons {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ===== Chat Messages ===== */
+.whatsapp-chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #ece5dd;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-clip {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bubble-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.message-bubble {
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 18px;
+  max-width: 85%;
+  word-wrap: break-word;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.message-bubble.incoming {
+  background: #fff;
+  color: #000;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #999;
+  margin: 0 12px;
+}
+
+.smiley-emoji {
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+.message-wish {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  color: white;
+  padding: 16px 12px;
+  border-radius: 18px;
+  max-width: 85%;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.message-subtext {
+  background: #e8f5e9;
+  padding: 12px;
+  border-radius: 18px;
+  max-width: 85%;
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Chat Input ===== */
+.whatsapp-input {
+  background: #ece5dd;
+  padding: 8px 16px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.whatsapp-input input {
+  flex: 1;
+  border: none;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 24px;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.send-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #128c7e;
+}
+
+/* Scrollbar styling */
+.whatsapp-chat::-webkit-scrollbar {
+  width: 6px;
+}
+
+.whatsapp-chat::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.whatsapp-chat::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.whatsapp-chat::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ===== Full Screen Message ===== */
+.fullscreen-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: all 0.7s ease-out;
+  z-index: 1000;
+}
+
+.fullscreen-message.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.special-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.special-text {
+  font-size: 5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.special-emoji {
+  font-size: 8rem;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.container {
+  height: 100vh;
+  height: 100svh;
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  visibility: hidden;
+  position: relative;
+  overflow: hidden;
+}
+
+.container div.six {
+  top: 10vh;
+  z-index: 1;
+}
+
+.container div.seven,
+.container div.eight {
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  position: fixed;
+  top: 0;
+}
+
+.container>div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20vh;
+}
+
+.one {
+  font-size: 4.5rem;
+}
+
+.one>img {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+.two {
+  font-size: 1.2rem;
+  font-weight: lighter;
+}
+
+.three {
+  font-size: 3rem;
+}
+
+.four .text-box {
+  width: 600px;
+  margin: 0 auto;
+  border: 3px solid #aaa;
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  background: linear-gradient(to bottom, #fff9c4, #fff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-box p {
+  margin: 0;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.hbd-chatbox {
+  margin-bottom: 10px;
+}
+
+.hbd-chatbox::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #000;
+  margin-left: 3px;
+  animation: blink 0.7s infinite;
+  animation-play-state: running;
+}
+
+.hbd-chatbox.typing-complete::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.text-box span {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.text-box .fake-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #fff;
+  background-color: rgb(21, 161, 237);
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+
+.five p {
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.idea-3 strong {
+  padding: 3px 5px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.five .idea-5 {
+  font-size: 4rem;
+}
+
+.idea-5 span,
+.idea-6 span,
+.wish-hbd span {
+  display: inline-block;
+}
+
+.idea-6 span {
+  font-size: 15rem;
+}
+
+.six {
+  position: relative;
+}
+
+.six img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.six .hat {
+  position: absolute;
+  width: 80px;
+  top: -12px;
+  left: 56%;
+  transform-origin: 50% 100%;
+}
+
+.baloons img {
+  display: inline-block;
+  position: absolute;
+}
+
+.baloons img:nth-child(even) {
+  left: -10%;
+}
+
+.baloons img:nth-child(odd) {
+  right: -10%;
+}
+
+.baloons img:nth-child(3n + 0) {
+  left: 30%;
+}
+
+.eight svg {
+  width: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.eight svg:nth-child(1) {
+  top: 7vh;
+  left: 5vw;
+  fill: #bd6ecf;
+}
+
+.eight svg:nth-child(2) {
+  top: 23vh;
+  left: 35vw;
+  fill: #7dd175;
+}
+
+.eight svg:nth-child(3) {
+  top: 33vh;
+  left: 23vw;
+  fill: #349d8b;
+}
+
+.eight svg:nth-child(4) {
+  top: 43vh;
+  left: 57vw;
+  fill: #347a9d;
+}
+
+.eight svg:nth-child(5) {
+  top: 68vh;
+  left: 7vw;
+  fill: #c66053;
+}
+
+.eight svg:nth-child(6) {
+  top: 42vh;
+  left: 77vw;
+  fill: #bfaa40;
+}
+
+.eight svg:nth-child(7) {
+  top: 68vh;
+  left: 83vw;
+  fill: #e3bae8;
+}
+
+.eight svg:nth-child(8) {
+  top: 86vh;
+  left: 37vw;
+  fill: #8762cb;
+}
+
+.eight svg:nth-child(9) {
+  top: 94vh;
+  left: 87vw;
+  fill: #9a90da;
+}
+
+.wish-hbd {
+  font-size: 3em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.wish h5 {
+  font-weight: lighter;
+  font-size: 2rem;
+  margin: 10px 0 0;
+}
+
+/* One-second cake-cutting transition before the gift form appears. */
+.cake-scene,
+.wait-message {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 4;
+}
+
+.cake-scene {
+  top: 24vh !important;
+  height: 330px;
+  perspective: 700px;
+}
+
+.cake {
+  position: relative;
+  width: 260px;
+  height: 230px;
+  margin: 0 auto;
+  transform: translateY(25px);
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 5px;
+  left: 12px;
+  width: 236px;
+  height: 25px;
+  border-radius: 50%;
+  background: #d7e7ff;
+  box-shadow: 0 8px 0 #a9c9f2, 0 14px 20px rgba(24, 76, 125, .2);
+}
+
+.cake-body {
+  position: absolute;
+  bottom: 25px;
+  left: 35px;
+  width: 190px;
+  height: 105px;
+  border-radius: 12px 12px 24px 24px;
+  background: repeating-linear-gradient(90deg, #f59ab2 0 18px, #f8b2c3 18px 28px);
+  box-shadow: inset 0 -12px 0 rgba(190, 67, 107, .2);
+}
+
+.cake-body::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -2px;
+  width: 194px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff4f7;
+  box-shadow: 0 5px 0 #f6b3c5;
+}
+
+.cake-body i {
+  position: absolute;
+  top: 5px;
+  width: 12px;
+  height: 22px;
+  border-radius: 0 0 9px 9px;
+  background: #fff;
+}
+
+.cake-body i:nth-child(1) {
+  left: 28px;
+}
+
+.cake-body i:nth-child(2) {
+  left: 88px;
+}
+
+.cake-body i:nth-child(3) {
+  right: 25px;
+}
+
+.cake-top {
+  position: absolute;
+  z-index: 1;
+  top: 70px;
+  left: 35px;
+  width: 190px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ffe2eb;
+  border: 5px solid #f7b1c5;
+}
+
+.cake-candle {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 121px;
+  width: 18px;
+  height: 58px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(-45deg, #fff 0 7px, #6c63ff 7px 12px);
+}
+
+.cake-candle span {
+  position: absolute;
+  top: -18px;
+  left: 3px;
+  width: 12px;
+  height: 20px;
+  border-radius: 50% 50% 45% 45%;
+  background: #ffb347;
+  box-shadow: 0 0 12px #ffb347;
+}
+
+.cake-knife {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  left: calc(50% + 70px);
+  width: 22px;
+  height: 210px;
+  transform: rotate(35deg) translateY(-35px);
+  transform-origin: 50% 12px;
+}
+
+.cake-knife::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 18px;
+  height: 126px;
+  border-radius: 3px 3px 12px 12px;
+  background: linear-gradient(90deg, #b8c6d8, #fff 50%, #8b9caf);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+}
+
+.cake-knife span {
+  position: absolute;
+  top: 112px;
+  left: -6px;
+  width: 34px;
+  height: 92px;
+  border-radius: 10px 10px 16px 16px;
+  background: #39465a;
+  box-shadow: inset 5px 0 rgba(255, 255, 255, .12);
+}
+
+.wait-message {
+  top: 38vh !important;
+  font-size: clamp(2.8rem, 12vw, 5rem);
+  font-weight: 700;
+  color: #ff69b4;
+  text-shadow: 0 4px 14px rgba(255, 105, 180, .25);
+}
+
+.wait-dots {
+  display: inline-block;
+}
+
+.nine p {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+#replay {
+  z-index: 3;
+  cursor: pointer;
+}
+
+.gift-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4vh !important;
+}
+
+.gift-card {
+  width: min(680px, 90vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: left;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .16);
+}
+
+.gift-card h2 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.gift-card p {
+  margin-top: 0;
+}
+
+.gift-card fieldset {
+  margin: 14px 0;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+}
+
+.gift-card legend {
+  font-weight: 600;
+}
+
+.gift-card label {
+  display: block;
+  margin: 8px 0;
+}
+
+.gift-card input[type="url"],
+.gift-card textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.gift-card textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.gift-card button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 16px;
+  color: #fff;
+  background: #128c7e;
+  cursor: pointer;
+  font: inherit;
+}
+
+.gift-status {
+  min-height: 1.4em;
+  margin-top: 10px !important;
+  color: #17695f;
+}
+
+/* Media Queries */
+@media screen and (max-height: 1000px) {
+  .six .hat {
+    left: 56%;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .six .hat {
+    left: 56%;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .six .hat {
+    left: 56%;
+  }
+}
+
+@media screen and (max-height: 850px) and (max-width: 450px) {
+  .six .hat {
+    left: 56%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+
+  .four .text-box {
+    width: 90%;
+  }
+
+  .text-box .fake-btn {
+    right: 5px;
+    bottom: -38px;
+  }
+
+  .idea-5 span {
+    display: block;
+  }
+
+  .idea-6 span {
+    font-size: 10rem;
+  }
+
+  .six .hat {
+    width: 50px;
+    top: -20px;
+  }
+
+  .wish-hbd {
+    font-size: 2.2em;
+  }
+
+  .wish h5 {
+    font-size: 1.4rem;
+  }
+
+  .nine p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+}
+
+/* Fit the animation and gift form comfortably on portrait phone screens. */
+@media screen and (max-width: 600px) {
+  body {
+    min-height: 100svh;
+    padding: 0;
+  }
+
+  .phone-frame {
+    width: min(90vw, 390px);
+    height: min(82svh, calc(90vw * 2), 760px);
+    border-width: 8px;
+    border-radius: 36px;
+  }
+
+  .phone-notch {
+    width: 42%;
+    height: 22px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .whatsapp-header {
+    padding: 24px 12px 10px;
+  }
+
+  .whatsapp-chat {
+    padding: 12px;
+  }
+
+  .whatsapp-input {
+    padding: 8px 12px 12px;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100svh;
+  }
+
+  .container>div {
+    top: 16svh;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .one {
+    font-size: clamp(2.3rem, 12vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .two {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .three {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .five p {
+    padding: 0 16px;
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.3;
+  }
+
+  .five .idea-5 {
+    font-size: clamp(2.4rem, 12vw, 3.5rem);
+  }
+
+  .idea-6 span {
+    font-size: min(42vw, 10rem);
+  }
+
+  .container div.six {
+    top: 12svh;
+  }
+
+  .six .lydia-dp {
+    max-height: 44svh;
+    width: auto;
+  }
+
+  .six .hat {
+    width: 52px;
+    top: -8px;
+    left: 56%;
+  }
+
+  .wish-hbd {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  .wish h5 {
+    padding: 0 16px;
+    font-size: 1.2rem;
+  }
+
+  .cake-scene {
+    top: 25svh !important;
+    transform: scale(.78);
+  }
+
+  .wait-message {
+    top: 38svh !important;
+  }
+
+  .special-text {
+    padding: 0 20px;
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .special-emoji {
+    font-size: clamp(5rem, 25vw, 7rem);
+  }
+
+  .gift-section {
+    top: 1svh !important;
+    padding: 0 10px !important;
+  }
+
+  .gift-card {
+    width: 100%;
+    max-height: 96svh;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .gift-card h2 {
+    font-size: 1.45rem;
+  }
+
+  .gift-card fieldset {
+    margin: 10px 0;
+  }
+}

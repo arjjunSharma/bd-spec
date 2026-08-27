@@ -1,0 +1,32 @@
+{
+  "greeting": "Hello",
+  "name": "Aditi",
+  "greetingText": "I hope you are fully recovered from your accident unfortunate not to help you in your tough time but I am here to wish you a very happy birthday and a very happy life ahead.",
+  "wishText": "My ashirwad is always be with you! ;)",
+  "imagePath": "img/init2.png",
+  "text1": "It's your birthday!!! :D",
+  "textInChatBox": "Happy birthday to you!! Yeee! Many many happy blah...",
+  "sendButtonLabel": "Send",
+  "text2": "That's what I was going to do.",
+  "text3": "But then I stopped.",
+  "text4": "I realised, I wanted to do something",
+  "text4Adjective": "special",
+  "text5Entry": "Because,",
+  "text5Content": "You are Special",
+  "smiley": ":)",
+  "bigTextPart1": "S",
+  "bigTextPart2": "O",
+  "wishHeading": "Happy Birthday!",
+  "outroText": "Okay, now come back and tell me if you liked it.",
+  "giftRecipientEmail": "43arjunsharma@gmail.com",
+  "googleFormAction": "https://docs.google.com/forms/d/e/1FAIpQLSfLnZjjjVmtRqj7FNcMOjiw0Yw5GufdLEpXCqgihjTaP0s_9g/formResponse",
+  "googleFormFields": {
+    "games": "entry.1855640849",
+    "accessories": "entry.1895757693",
+    "subscriptions": "entry.542494483",
+    "productLink": "entry.2108682108",
+    "address": "entry.1220809415"
+  },
+  "replayText": "Or click, if you want to watch it again.",
+  "outroSmiley": ":)"
+}
