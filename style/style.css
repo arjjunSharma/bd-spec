@@ -510,7 +510,7 @@ body {
   position: absolute;
   width: 80px;
   top: -12px;
-  left: 56%;
+  left: 51%;
   transform-origin: 50% 100%;
 }
 
@@ -851,25 +851,25 @@ body {
 /* Media Queries */
 @media screen and (max-height: 1000px) {
   .six .hat {
-    left: 56%;
+    left: 53%;
   }
 }
 
 @media screen and (max-height: 800px) {
   .six .hat {
-    left: 56%;
+    left: 53%;
   }
 }
 
 @media screen and (max-height: 700px) {
   .six .hat {
-    left: 56%;
+    left: 53%;
   }
 }
 
 @media screen and (max-height: 850px) and (max-width: 450px) {
   .six .hat {
-    left: 56%;
+    left: 53%;
   }
 }
 
@@ -1000,7 +1000,7 @@ body {
   .six .hat {
     width: 52px;
     top: -8px;
-    left: 56%;
+    left: 53%;
   }
 
   .wish-hbd {
